@@ -17,14 +17,14 @@ yarn add react-native-reanimatable
 After that, follow the [Getting Started](https://github.com/kmagiera/react-native-reanimated#getting-started) of Reanimated, because the library uses it under the hood.
 
 ## Roadmap
-- [] Add support for decay and spring type of animations
-- [] Add support for keyframes (interpolation)
-- [] Add support for mounting/unmounting animations
-- [] Add more examples
-- [] Add docs
-- [] Add typings
-- [] Add out of the box animations (bounces, zooms)
-- [] Add animation lifecycle
+- [ ] Add support for decay and spring type of animations
+- [ ] Add support for keyframes (interpolation)
+- [ ] Add support for mounting/unmounting animations
+- [ ] Add more examples
+- [ ] Add docs
+- [ ] Add typings
+- [ ] Add out of the box animations (bounces, zooms)
+- [ ] Add animation lifecycle
 
 ## Example
 ```jsx
