@@ -2,6 +2,10 @@
 
 > Easy way to create 60fps animations using [react-native-reanimated](https://github.com/kmagiera/react-native-reanimated).
 
+## Warning
+
+This is still very _*work in progress*_. Many things may change. It's not recommended to use it in production right now (but I will :D).
+
 ## Installation
 
 Install the library from npm:
