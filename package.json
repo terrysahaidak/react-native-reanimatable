@@ -1,0 +1,18 @@
+{
+  "name": "react-native-reanimatable",
+  "version": "0.0.1",
+  "description": "Wrapper for Reanimated with a easy declarative API.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "animations",
+    "react-native",
+    "reactnative",
+    "reanimated",
+    "animatable"
+  ],
+  "author": "Terry Sahaidak [terry@sahaidak.com]",
+  "license": "MIT"
+}
