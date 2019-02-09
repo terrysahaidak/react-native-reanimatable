@@ -2,7 +2,7 @@
   "name": "react-native-reanimatable",
   "version": "0.1.0",
   "description": "Wrapper for Reanimated with a easy declarative API.",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,6 +13,22 @@
     "reanimated",
     "animatable"
   ],
-  "author": "Terry Sahaidak [terry@sahaidak.com]",
-  "license": "MIT"
+  "author": {
+    "name": "Terry Sahaidak",
+    "email": "terry@sahaidak.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "babel-eslint": "^8.0.1",
+    "eslint": "^4.2.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-formatter-pretty": "^1.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-react-native": "^3.1.0",
+    "metro-react-native-babel-preset": "^0.45.3",
+    "react-native-reanimated": "^1.0.0-alpha.12"
+  }
 }
