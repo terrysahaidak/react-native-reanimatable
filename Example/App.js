@@ -4,14 +4,17 @@ import {
   View,
   TouchableOpacity,
   Text,
+  Dimensions,
 } from 'react-native';
 import { Reanimatable } from 'react-native-reanimatable';
 import Animated from 'react-native-reanimated';
 
+const { width: windowWidth } = Dimensions.get('window');
+
 const colors = {
-  red: 'red',
+  red: '#e74c3c',
   white: 'white',
-  blue: 'blue',
+  green: '#2ecc71',
 };
 
 const config = {
@@ -22,7 +25,8 @@ const config = {
   values: {
     width: { from: 100, to: 150 },
     height: { from: 100, to: 150 },
-    translateX: { from: 50, to: 200 },
+    translateX: { from: 20, to: windowWidth - 20 - 150 },
+    borderRadius: { from: 0, to: 100 },
   },
 };
 
@@ -44,7 +48,7 @@ const s = StyleSheet.create({
     padding: 8,
     bottom: 50,
     alignSelf: 'center',
-    backgroundColor: colors.blue,
+    backgroundColor: colors.green,
     borderRadius: 6,
   },
   buttonText: {
@@ -69,11 +73,12 @@ export default class App extends React.PureComponent {
           value={this.state.value}
           containerStyle={s.animationContainer}
         >
-          {({ width, height, translateX }) => (
+          {({ translateX, ...animatedValues }) => (
             <Animated.View
               style={[
                 s.animatableView,
-                { width, height, transform: [{ translateX }] },
+                animatedValues,
+                { transform: [{ translateX }] },
               ]}
             />
           )}
