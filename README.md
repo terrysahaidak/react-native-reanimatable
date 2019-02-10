@@ -6,6 +6,8 @@
 
 This is still very _*work in progress*_. Many things may change. It's not recommended to use it in production right now (but I will :D).
 
+Many things are still missing. Check out our [roadmap](#roadmap).
+
 ## Installation
 
 Install the library from npm:
@@ -27,8 +29,9 @@ After that, follow the [Getting Started](https://github.com/kmagiera/react-nativ
 - [ ] Add more examples
 - [ ] Add docs
 - [ ] Add typings
-- [ ] Add out of the box animations (bounces, zooms)
+- [ ] Add some out of the box animations (bounces, zooms etc)
 - [ ] Add animation lifecycle
+- [ ] Add support for color animations
 
 ## Example
 ```jsx

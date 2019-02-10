@@ -1,7 +1,7 @@
 {
   "name": "react-native-reanimatable",
   "version": "0.1.0",
-  "description": "Wrapper for Reanimated with a easy declarative API.",
+  "description": "Wrapper for Reanimated with an easy declarative API.",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
