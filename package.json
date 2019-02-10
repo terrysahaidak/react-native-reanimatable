@@ -37,5 +37,8 @@
     "react-native": "*",
     "react": "*",
     "react-native-reanimated": "*"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.2"
   }
 }

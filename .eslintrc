@@ -36,6 +36,8 @@
     "react-native/no-inline-styles": 2,
     "react-native/no-color-literals": 2,
     "class-methods-use-this": "off",
-    "arrow-parens": "off"
+    "arrow-parens": "off",
+    "import/no-unresolved": ["error", { "ignore": ["^react$", "^react-native$", "^react-native-reanimated$"] }],
+    "import/extensions": ["error", "never", {"ignorePackages": true, "js": "never"} ]
   }
 }
