@@ -23,9 +23,9 @@ const config = {
     duration: 300,
   },
   values: {
-    width: { from: 100, to: 150 },
-    height: { from: 100, to: 150 },
-    translateX: { from: 20, to: windowWidth - 20 - 150 },
+    width: { from: 50, to: 200 },
+    height: { from: 50, to: 200 },
+    left: { from: 20, to: windowWidth - 20 - 200 },
     borderRadius: { from: 0, to: 100 },
   },
 };
@@ -34,7 +34,7 @@ const s = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
-    paddingTop: 100,
+    paddingTop: 50,
   },
   animationContainer: {
     marginBottom: 100,
@@ -75,11 +75,7 @@ export default class App extends React.PureComponent {
         >
           {({ translateX, ...animatedValues }) => (
             <Animated.View
-              style={[
-                s.animatableView,
-                animatedValues,
-                { transform: [{ translateX }] },
-              ]}
+              style={[s.animatableView, animatedValues]}
             />
           )}
         </Reanimatable>
