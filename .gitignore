@@ -3,5 +3,6 @@
 .DS_Store
 **/.DS_Store
 
-node_modules
-dest
+node_modules/**/*
+dest/
+npm-debug.*
