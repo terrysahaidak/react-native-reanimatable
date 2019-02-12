@@ -24,14 +24,14 @@ After that, follow the [Getting Started](https://github.com/kmagiera/react-nativ
 
 ## Roadmap
 - [ ] Add support for decay and spring type of animations
+- [ ] Add support for color animations
 - [ ] Add support for keyframes (interpolation)
-- [ ] Add support for mounting/unmounting animations
+- [ ] Add some out of the box animations (bounces, zooms etc)
 - [ ] Add more examples
 - [ ] Add docs
+- [ ] Add support for mounting/unmounting animations
 - [ ] Add typings
-- [ ] Add some out of the box animations (bounces, zooms etc)
 - [ ] Add animation lifecycle
-- [ ] Add support for color animations
 
 ## Example
 ```jsx

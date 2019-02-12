@@ -39,6 +39,7 @@
     "react-native-reanimated": "*"
   },
   "dependencies": {
+    "hex-to-rgba": "^1.0.2",
     "prop-types": "^15.6.2"
   }
 }
