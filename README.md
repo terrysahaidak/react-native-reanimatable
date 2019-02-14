@@ -24,7 +24,7 @@ After that, follow the [Getting Started](https://github.com/kmagiera/react-nativ
 
 ## Roadmap
 - [ ] Add support for decay and spring type of animations
-- [ ] Add support for keyframes (interpolation)
+- [x] Add support for keyframes (interpolation)
 - [ ] Add support for mounting/unmounting animations
 - [ ] Add more examples
 - [ ] Add docs
