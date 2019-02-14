@@ -75,15 +75,18 @@ const s = StyleSheet.create({
     width: size,
   },
   button: {
-    position: 'absolute',
     padding: 8,
-    bottom: 50,
-    alignSelf: 'center',
     backgroundColor: colors.green,
     borderRadius: 6,
   },
   buttonText: {
     color: colors.white,
+  },
+  row: {
+    flexDirection: 'row',
+    position: 'absolute',
+    bottom: 50,
+    alignSelf: 'center',
   },
 });
 
@@ -91,15 +94,17 @@ export default class App extends React.PureComponent {
   state = {
     value: false,
   };
+  animationRef = React.createRef();
 
   toggleAnimation() {
-    this.setState((state) => ({ value: !state.value }));
+    this.animationRef.current.reset();
   }
 
   render() {
     return (
       <View style={s.container}>
         <Reanimatable
+          ref={this.animationRef}
           config={config}
           value={this.state.value}
           containerStyle={s.animationContainer}
@@ -117,12 +122,21 @@ export default class App extends React.PureComponent {
           )}
         </Reanimatable>
 
-        <TouchableOpacity
-          onPress={() => this.toggleAnimation()}
-          style={s.button}
-        >
-          <Text style={s.buttonText}>Toggle animation</Text>
-        </TouchableOpacity>
+        <View style={s.row}>
+          <TouchableOpacity
+            onPress={() => this.animationRef.current.reset()}
+            style={s.button}
+          >
+            <Text style={s.buttonText}>Restart</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => this.animationRef.current.pause()}
+            style={s.button}
+          >
+            <Text style={s.buttonText}>Pause</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
