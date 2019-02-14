@@ -43,10 +43,10 @@ import {
   Button,
   Animated,
 } from 'react-native';
-import Reanimatable from 'react-native-reanimatable';
+import { Reanimatable, createAnimationConfig } from 'react-native-reanimatable';
 import Animated from 'react-native-reanimated';
 
-const config = {
+const config = createAnimationConfig({
   animation: {
     type: 'timing',
     duration: 300,
@@ -56,7 +56,7 @@ const config = {
     height: { from: 100, to: 150 },
     translateY: { from: 0, to: 200 },
   },
-};
+});
 
 const s = StyleSheet.create({
   container: {
