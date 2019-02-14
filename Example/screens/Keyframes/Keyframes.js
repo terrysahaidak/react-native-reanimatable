@@ -129,13 +129,6 @@ export default class App extends React.PureComponent {
           >
             <Text style={s.buttonText}>Restart</Text>
           </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => this.animationRef.current.pause()}
-            style={s.button}
-          >
-            <Text style={s.buttonText}>Pause</Text>
-          </TouchableOpacity>
         </View>
       </View>
     );
