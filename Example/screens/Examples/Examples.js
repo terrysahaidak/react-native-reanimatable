@@ -7,6 +7,7 @@ import { NavigationService } from '../../services';
 
 const list = [
   { title: 'Base transition', screen: screens.TransitionBase },
+  { title: 'Keyframes (interpolation)', screen: screens.Keyframes },
 ];
 
 const Examples = () => {

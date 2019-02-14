@@ -6,8 +6,8 @@ import {
   Text,
   Dimensions,
 } from 'react-native';
-import { Reanimatable, animations } from 'react-native-reanimatable';
-import A from 'react-native-reanimated';
+import { Reanimatable } from 'react-native-reanimatable';
+import Animated from 'react-native-reanimated';
 
 const { width: windowWidth } = Dimensions.get('window');
 
@@ -17,123 +17,107 @@ const colors = {
   green: '#2ecc71',
 };
 
+const size = 100;
+
+const config = {
+  duration: 2000,
+  keyframes: {
+    0: {
+      opacity: 0,
+      scale: 1,
+      left: 0,
+      top: 0,
+    },
+    25: {
+      opacity: 0.7,
+      scale: 0.3,
+      left: (windowWidth - size) / 4,
+      top: 100,
+    },
+    50: {
+      opacity: 1,
+      scale: 1,
+      left: (windowWidth - size) / 2,
+      top: 0,
+    },
+    75: {
+      opacity: 0.7,
+      scale: 0.3,
+      left: (windowWidth - size) / 1.5,
+      top: 100,
+    },
+    100: {
+      opacity: 0,
+      scale: 1,
+      left: windowWidth - size,
+      top: 0,
+    },
+  },
+};
+
 const s = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
-    padding: 50,
+    paddingTop: 50,
+  },
+  animationContainer: {
+    marginBottom: 100,
   },
   animatableView: {
-    height: 100,
-    width: 100,
+    height: size,
     backgroundColor: colors.red,
+    width: size,
+  },
+  button: {
+    position: 'absolute',
+    padding: 8,
+    bottom: 50,
+    alignSelf: 'center',
+    backgroundColor: colors.green,
+    borderRadius: 6,
+  },
+  buttonText: {
+    color: colors.white,
   },
 });
 
-export const keyframes = {
-  0: {
-    opacity: 1,
-    scale: 1,
-  },
-  50: {
-    opacity: 1,
-    scale: 0.3,
-  },
-  100: {
-    opacity: 0,
-    scale: 0,
-  },
-};
-
-function generateRanges(pairs, duration) {
-  return pairs.reduce(
-    (acc, current) => {
-      const [frame, value] = current;
-      const fixedFrame = +frame;
-      acc.inputRange.push(
-        fixedFrame === 0 ? 0 : (fixedFrame * duration) / 100,
-      );
-      acc.outputRange.push(+value);
-
-      return acc;
-    },
-    {
-      inputRange: [],
-      outputRange: [],
-    },
-  );
-}
-
-function normalizeValues(keyframes) {
-  return Object.keys(keyframes).reduce((acc, frameName) => {
-    const currentFrame = keyframes[frameName];
-
-    Object.keys(currentFrame).forEach((propName) => {
-      const stylePairs = [frameName, currentFrame[propName]];
-      if (Array.isArray(acc[propName])) {
-        acc[propName].push(stylePairs);
-      } else {
-        acc[propName] = [stylePairs];
-      }
-    });
-
-    return acc;
-  }, {});
-}
-
-function generateInterpolations({ keyframes, duration, baseValue }) {
-  const normalized = normalizeValues(keyframes);
-
-  return Object.keys(normalized).reduce((acc, name) => {
-    const pairs = normalized[name];
-
-    const animatedValue = A.interpolate(baseValue, {
-      // pairs = [[frameName, value], [frameName, value]]
-      ...generateRanges(pairs, duration),
-      extrapolate: A.Extrapolate.CLAMP,
-    });
-
-    acc[name] = animatedValue;
-
-    return acc;
-  }, {});
-}
-
 export default class App extends React.PureComponent {
-  constructor(props) {
-    super(props);
+  state = {
+    value: false,
+  };
 
-    this.interpolation = new A.Value(0);
-    const duration = 1000;
-
-    const clock = new A.Clock();
-
-    this.animation = animations.runTiming({
-      clock,
-      oppositeClock: new A.Clock(),
-      value: this.interpolation,
-      dest: duration,
-      duration,
-    });
-
-    this.values = generateInterpolations({
-      keyframes,
-      duration,
-      baseValue: this.interpolation,
-    });
+  toggleAnimation() {
+    this.setState((state) => ({ value: !state.value }));
   }
 
   render() {
-    const { opacity, scale } = this.values;
     return (
       <View style={s.container}>
-        <A.Code exec={this.animation} />
-        <A.View
-          style={[
-            s.animatableView,
-            { opacity, transform: [{ scale }] },
-          ]}
-        />
+        <Reanimatable
+          config={config}
+          value={this.state.value}
+          containerStyle={s.animationContainer}
+        >
+          {({ scale, ...animationValues }) => (
+            <Animated.View
+              style={[
+                s.animatableView,
+                {
+                  ...animationValues,
+                  transform: [{ scale }],
+                },
+              ]}
+            />
+          )}
+        </Reanimatable>
+
+        <TouchableOpacity
+          onPress={() => this.toggleAnimation()}
+          style={s.button}
+        >
+          <Text style={s.buttonText}>Toggle animation</Text>
+        </TouchableOpacity>
       </View>
     );
   }
