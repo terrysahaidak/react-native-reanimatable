@@ -6,7 +6,10 @@ import {
   Text,
   Dimensions,
 } from 'react-native';
-import { Reanimatable } from 'react-native-reanimatable';
+import {
+  Reanimatable,
+  createAnimationConfig,
+} from 'react-native-reanimatable';
 import Animated from 'react-native-reanimated';
 
 const { width: windowWidth } = Dimensions.get('window');
@@ -19,8 +22,10 @@ const colors = {
 
 const size = 100;
 
-const config = {
-  duration: 2000,
+const config = createAnimationConfig({
+  animation: {
+    duration: 2000,
+  },
   keyframes: {
     0: {
       opacity: 0,
@@ -53,7 +58,7 @@ const config = {
       top: 0,
     },
   },
-};
+});
 
 const s = StyleSheet.create({
   container: {
