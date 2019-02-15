@@ -1,16 +1,11 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  Text,
-  Dimensions,
-} from 'react-native';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import {
   Reanimatable,
   createAnimationConfig,
 } from 'react-native-reanimatable';
 import Animated from 'react-native-reanimated';
+import { Button } from '../../components';
 
 const { width: windowWidth } = Dimensions.get('window');
 
@@ -46,32 +41,35 @@ const s = StyleSheet.create({
     height: 100,
     backgroundColor: colors.red,
   },
-  button: {
+  row: {
+    flexDirection: 'row',
     position: 'absolute',
-    padding: 8,
     bottom: 50,
     alignSelf: 'center',
-    backgroundColor: colors.green,
-    borderRadius: 6,
-  },
-  buttonText: {
-    color: colors.white,
   },
 });
 
 export default class App extends React.PureComponent {
   state = {
-    value: false,
+    value: true,
   };
+  reanimatableRef = React.createRef();
+  initialValue = this.state.value;
 
   toggleAnimation() {
     this.setState((state) => ({ value: !state.value }));
+  }
+
+  toggleReset() {
+    this.initialValue = !this.initialValue;
+    this.reanimatableRef.current.resetTo(this.initialValue);
   }
 
   render() {
     return (
       <View style={s.container}>
         <Reanimatable
+          ref={this.reanimatableRef}
           config={config}
           value={this.state.value}
           containerStyle={s.animationContainer}
@@ -83,12 +81,22 @@ export default class App extends React.PureComponent {
           )}
         </Reanimatable>
 
-        <TouchableOpacity
-          onPress={() => this.toggleAnimation()}
-          style={s.button}
-        >
-          <Text style={s.buttonText}>Toggle animation</Text>
-        </TouchableOpacity>
+        <View style={s.row}>
+          <Button
+            onPress={() => this.toggleAnimation()}
+            text="Toggle animation"
+          />
+
+          <Button
+            onPress={() => this.reanimatableRef.current.reset()}
+            text="Reset"
+          />
+
+          <Button
+            onPress={() => this.toggleReset()}
+            text="Toggle Reset"
+          />
+        </View>
       </View>
     );
   }
