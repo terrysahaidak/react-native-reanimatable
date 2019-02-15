@@ -6,10 +6,13 @@ class NavigationService {
     this.navigation = this._ref._navigation;
   }
 
-  navigate(screen) {
-    this.navigation.navigate(
-      typeof screen === 'object' ? screen : { routeName: screen },
-    );
+  navigate(screen, params) {
+    const route =
+      typeof params !== 'object'
+        ? screen
+        : { routeName: screen, params };
+
+    this.navigation.navigate(route);
   }
 }
 
