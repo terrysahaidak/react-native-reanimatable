@@ -24,7 +24,7 @@ After that, follow the [Getting Started](https://github.com/kmagiera/react-nativ
 
 ## Roadmap
 - [ ] Add support for decay and spring type of animations
-- [ ] Add support for keyframes (interpolation)
+- [x] Add support for keyframes (interpolation)
 - [ ] Add support for mounting/unmounting animations
 - [ ] Add more examples
 - [ ] Add docs
@@ -32,6 +32,7 @@ After that, follow the [Getting Started](https://github.com/kmagiera/react-nativ
 - [ ] Add some out of the box animations (bounces, zooms etc)
 - [ ] Add animation lifecycle
 - [ ] Add support for color animations
+- [ ] Add ability to control the animation (play, pause, reset)
 
 ## Example
 ```jsx
@@ -43,10 +44,10 @@ import {
   Button,
   Animated,
 } from 'react-native';
-import Reanimatable from 'react-native-reanimatable';
+import { Reanimatable, createAnimationConfig } from 'react-native-reanimatable';
 import Animated from 'react-native-reanimated';
 
-const config = {
+const config = createAnimationConfig({
   animation: {
     type: 'timing',
     duration: 300,
@@ -56,7 +57,7 @@ const config = {
     height: { from: 100, to: 150 },
     translateY: { from: 0, to: 200 },
   },
-};
+});
 
 const s = StyleSheet.create({
   container: {

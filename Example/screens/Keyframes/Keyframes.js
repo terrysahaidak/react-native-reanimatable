@@ -6,7 +6,10 @@ import {
   Text,
   Dimensions,
 } from 'react-native';
-import { Reanimatable } from 'react-native-reanimatable';
+import {
+  Reanimatable,
+  createAnimationConfig,
+} from 'react-native-reanimatable';
 import Animated from 'react-native-reanimated';
 
 const { width: windowWidth } = Dimensions.get('window');
@@ -19,8 +22,10 @@ const colors = {
 
 const size = 100;
 
-const config = {
-  duration: 2000,
+const config = createAnimationConfig({
+  animation: {
+    duration: 2000,
+  },
   keyframes: {
     0: {
       opacity: 0,
@@ -53,7 +58,7 @@ const config = {
       top: 0,
     },
   },
-};
+});
 
 const s = StyleSheet.create({
   container: {
@@ -70,15 +75,18 @@ const s = StyleSheet.create({
     width: size,
   },
   button: {
-    position: 'absolute',
     padding: 8,
-    bottom: 50,
-    alignSelf: 'center',
     backgroundColor: colors.green,
     borderRadius: 6,
   },
   buttonText: {
     color: colors.white,
+  },
+  row: {
+    flexDirection: 'row',
+    position: 'absolute',
+    bottom: 50,
+    alignSelf: 'center',
   },
 });
 
@@ -86,15 +94,17 @@ export default class App extends React.PureComponent {
   state = {
     value: false,
   };
+  animationRef = React.createRef();
 
   toggleAnimation() {
-    this.setState((state) => ({ value: !state.value }));
+    this.animationRef.current.reset();
   }
 
   render() {
     return (
       <View style={s.container}>
         <Reanimatable
+          ref={this.animationRef}
           config={config}
           value={this.state.value}
           containerStyle={s.animationContainer}
@@ -112,12 +122,14 @@ export default class App extends React.PureComponent {
           )}
         </Reanimatable>
 
-        <TouchableOpacity
-          onPress={() => this.toggleAnimation()}
-          style={s.button}
-        >
-          <Text style={s.buttonText}>Toggle animation</Text>
-        </TouchableOpacity>
+        <View style={s.row}>
+          <TouchableOpacity
+            onPress={() => this.animationRef.current.reset()}
+            style={s.button}
+          >
+            <Text style={s.buttonText}>Restart</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }

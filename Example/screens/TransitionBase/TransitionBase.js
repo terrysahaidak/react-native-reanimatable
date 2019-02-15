@@ -6,7 +6,10 @@ import {
   Text,
   Dimensions,
 } from 'react-native';
-import { Reanimatable } from 'react-native-reanimatable';
+import {
+  Reanimatable,
+  createAnimationConfig,
+} from 'react-native-reanimatable';
 import Animated from 'react-native-reanimated';
 
 const { width: windowWidth } = Dimensions.get('window');
@@ -17,7 +20,7 @@ const colors = {
   green: '#2ecc71',
 };
 
-const config = {
+const config = createAnimationConfig({
   animation: {
     type: 'timing',
     duration: 300,
@@ -28,7 +31,7 @@ const config = {
     left: { from: 20, to: windowWidth - 20 - 200 },
     borderRadius: { from: 0, to: 100 },
   },
-};
+});
 
 const s = StyleSheet.create({
   container: {
