@@ -32,6 +32,7 @@ After that, follow the [Getting Started](https://github.com/kmagiera/react-nativ
 - [ ] Add some out of the box animations (bounces, zooms etc)
 - [ ] Add animation lifecycle
 - [ ] Add support for color animations
+- [ ] Add ability to control the animation (play, pause, reset)
 
 ## Example
 ```jsx
