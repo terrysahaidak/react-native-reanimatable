@@ -14,7 +14,9 @@ const Examples = () => {
   const renderItem = ({ item }) => (
     <ListItem
       {...item}
-      onPress={() => NavigationService.navigate(item.screen)}
+      onPress={() =>
+        NavigationService.navigate(item.screen, { title: item.title })
+      }
     />
   );
 
