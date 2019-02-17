@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import Animated from 'react-native-reanimated';
+import { ScrollView } from 'react-native-reanimatable';
 import s from './styles';
 import { Placeholder, Header } from './components';
 import {
@@ -10,12 +10,12 @@ import {
 
 const App = () => (
   <View style={s.container}>
-    <Animated.ScrollView
+    <ScrollView
       contentContainerStyle={{
         paddingTop: MAX_HEADER_HEIGHT,
       }}
       scrollEventThrottle={1}
-      onScroll={delegate.event}
+      delegate={delegate}
     >
       <Placeholder />
       <Placeholder />
@@ -23,7 +23,7 @@ const App = () => (
       <Placeholder />
       <Placeholder />
       <Placeholder />
-    </Animated.ScrollView>
+    </ScrollView>
     <Header />
   </View>
 );
