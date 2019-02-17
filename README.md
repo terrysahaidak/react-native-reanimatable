@@ -25,6 +25,9 @@ After that, follow the [Getting Started](https://github.com/kmagiera/react-nativ
 ## Roadmap
 - [ ] Add support for decay and spring type of animations
 - [x] Add support for keyframes (interpolation)
+- [x] Add support for scroll event delegation
+- [ ] Add support for pan events delegation
+- [ ] Add support for animated snap point of delegation
 - [ ] Add support for mounting/unmounting animations
 - [ ] Add more examples
 - [ ] Add docs
