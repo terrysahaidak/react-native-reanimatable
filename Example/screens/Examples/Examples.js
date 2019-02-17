@@ -1,5 +1,4 @@
 import React from 'react';
-import T from 'prop-types';
 import { FlatList } from 'react-native';
 import screens from '../../navigation/screens';
 import { ListItem, Separator } from '../../components';
@@ -8,6 +7,7 @@ import { NavigationService } from '../../services';
 const list = [
   { title: 'Base transition', screen: screens.TransitionBase },
   { title: 'Keyframes (interpolation)', screen: screens.Keyframes },
+  { title: 'Delegate (Scroll)', screen: screens.DelegateScroll },
 ];
 
 const Examples = () => {
@@ -30,8 +30,6 @@ const Examples = () => {
     />
   );
 };
-
-Examples.propTypes = {};
 
 Examples.navigationOptions = {
   title: 'Examples',
