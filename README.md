@@ -116,5 +116,9 @@ export default class App extends React.PureComponent {
 }
 ```
 
+## Inspirations
+
+Inspired by incredible [react-native-animatable](https://github.com/oblador/react-native-animatable/).
+
 ## License
-[MIT](LICENSE)
+[MIT](LICENSE) © Terry Sahaidak 2019
