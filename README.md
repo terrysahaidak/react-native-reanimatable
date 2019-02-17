@@ -22,6 +22,12 @@ yarn add react-native-reanimatable
 
 After that, follow the [Getting Started](https://github.com/kmagiera/react-native-reanimated#getting-started) of Reanimated, because the library uses it under the hood.
 
+## Usage
+
+Please, check out [Example](/Example) folder for now. You can run examples using [Expo](https://expo.io/learn).
+
+Detailed usage and explanation will come later.
+
 ## Roadmap
 - [ ] Add support for decay and spring type of animations
 - [x] Add support for keyframes (interpolation)
