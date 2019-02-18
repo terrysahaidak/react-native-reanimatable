@@ -62,7 +62,7 @@ const config = createAnimationConfig({
 
 const s = StyleSheet.create({
   container: {
-    flex: 1,
+    height: 300,
     backgroundColor: colors.white,
     paddingTop: 50,
   },
@@ -90,7 +90,7 @@ const s = StyleSheet.create({
   },
 });
 
-export default class App extends React.PureComponent {
+class Example extends React.PureComponent {
   state = {
     value: false,
   };
@@ -131,6 +131,27 @@ export default class App extends React.PureComponent {
           </TouchableOpacity>
         </View>
       </View>
+    );
+  }
+}
+
+export default class App extends React.PureComponent {
+  state = {
+    showSecond: false,
+  };
+
+  componentDidMount() {
+    // testing each animation has its own state
+    setTimeout(() => this.setState({ showSecond: true }), 1000);
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <Example />
+
+        {this.state.showSecond && <Example />}
+      </React.Fragment>
     );
   }
 }

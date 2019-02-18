@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Dimensions } from 'react-native';
+import { StyleSheet, View, Dimensions, FlatList } from 'react-native';
 import {
   Reanimatable,
   createAnimationConfig,
@@ -29,27 +29,23 @@ const config = createAnimationConfig({
 });
 
 const s = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.white,
-    paddingTop: 50,
+  scroll: {
+    paddingVertical: 20,
   },
   animationContainer: {
-    marginBottom: 100,
+    height: 250,
+    justifyContent: 'center',
   },
   animatableView: {
-    height: 100,
     backgroundColor: colors.red,
   },
   row: {
     flexDirection: 'row',
-    position: 'absolute',
-    bottom: 50,
     alignSelf: 'center',
   },
 });
 
-export default class App extends React.PureComponent {
+class Example extends React.PureComponent {
   state = {
     value: true,
   };
@@ -67,7 +63,7 @@ export default class App extends React.PureComponent {
 
   render() {
     return (
-      <View style={s.container}>
+      <View>
         <Reanimatable
           ref={this.reanimatableRef}
           config={config}
@@ -100,4 +96,18 @@ export default class App extends React.PureComponent {
       </View>
     );
   }
+}
+
+export default function App() {
+  // performance test
+  const range = Array.from(new Array(10));
+
+  return (
+    <FlatList
+      data={range}
+      contentContainerStyle={s.scroll}
+      renderItem={() => <Example />}
+      keyExtractor={(_, i) => i.toString()}
+    />
+  );
 }

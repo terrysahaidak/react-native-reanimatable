@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 import AppNavigator from './navigation/AppNavigator';
 import { NavigationService } from './services';
 // import screens from './navigation/screens';
@@ -12,7 +13,10 @@ class App extends React.PureComponent {
 
   render() {
     return (
-      <AppNavigator ref={(ref) => NavigationService.init(ref)} />
+      <React.Fragment>
+        <StatusBar ranslucent />
+        <AppNavigator ref={(ref) => NavigationService.init(ref)} />
+      </React.Fragment>
     );
   }
 }
