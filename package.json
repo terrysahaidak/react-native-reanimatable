@@ -1,6 +1,6 @@
 {
   "name": "react-native-reanimatable",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Wrapper for Reanimated with an easy declarative API.",
   "main": "lib/index.js",
   "scripts": {
