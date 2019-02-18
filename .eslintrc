@@ -38,6 +38,7 @@
     "class-methods-use-this": "off",
     "arrow-parens": "off",
     "import/no-unresolved": ["error", { "ignore": ["^react$", "^react-native$", "^react-native-reanimated$"] }],
-    "import/extensions": ["error", "never", {"ignorePackages": true, "js": "never"} ]
+    "import/extensions": ["error", "never", {"ignorePackages": true, "js": "never"} ],
+    "react/no-multi-comp": 0
   }
 }
