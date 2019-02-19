@@ -14,7 +14,11 @@ class App extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
-        <StatusBar ranslucent />
+        <StatusBar
+          translucent
+          barStyle="dark-content"
+          backgroundColor="transparent"
+        />
         <AppNavigator ref={(ref) => NavigationService.init(ref)} />
       </React.Fragment>
     );
