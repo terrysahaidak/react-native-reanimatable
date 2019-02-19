@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Text,
   Dimensions,
+  ScrollView,
 } from 'react-native';
 import {
   Reanimatable,
@@ -147,11 +148,11 @@ export default class App extends React.PureComponent {
 
   render() {
     return (
-      <React.Fragment>
+      <ScrollView>
         <Example />
 
         {this.state.showSecond && <Example />}
-      </React.Fragment>
+      </ScrollView>
     );
   }
 }
