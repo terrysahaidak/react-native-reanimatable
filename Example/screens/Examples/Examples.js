@@ -6,7 +6,10 @@ import { NavigationService } from '../../services';
 
 const list = [
   { title: 'Base transition', screen: screens.TransitionBase },
-  { title: 'Auto transition', screen: screens.AutoTransition },
+  {
+    title: 'Interpolation transition',
+    screen: screens.InterpolationTransition,
+  },
   { title: 'Keyframes (interpolation)', screen: screens.Keyframes },
   { title: 'Delegate (Scroll)', screen: screens.DelegateScroll },
 ];

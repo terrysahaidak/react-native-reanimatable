@@ -6,7 +6,7 @@ import { StatusBar, Platform } from 'react-native';
 import screens from './screens';
 import Examples from '../screens/Examples/Examples';
 import TransitionBase from '../screens/TransitionBase/TransitionBase';
-import AutoTransition from '../screens/AutoTransition/AutoTransition';
+import InterpolationTransition from '../screens/InterpolationTransition/InterpolationTransition';
 import Keyframes from '../screens/Keyframes/Keyframes';
 import DelegateScroll from '../screens/DelegateScroll/DelegateScroll';
 
@@ -14,7 +14,7 @@ const AppNavigator = createStackNavigator(
   {
     [screens.Examples]: Examples,
     [screens.TransitionBase]: TransitionBase,
-    [screens.AutoTransition]: AutoTransition,
+    [screens.InterpolationTransition]: InterpolationTransition,
     [screens.Keyframes]: Keyframes,
     [screens.DelegateScroll]: DelegateScroll,
   },

@@ -19,7 +19,7 @@ const config = createAnimationConfig({
   animation: {
     type: 'timing',
     duration: 300,
-    auto: true,
+    interpolation: true,
   },
   values: {
     width: { from: 50, to: 200 },

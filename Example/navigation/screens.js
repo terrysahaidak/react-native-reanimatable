@@ -3,7 +3,7 @@ import { createKeys } from '../utils';
 const screens = createKeys([
   'Examples',
   'TransitionBase',
-  'AutoTransition',
+  'InterpolationTransition',
   'Keyframes',
   'DelegateScroll',
 ]);
