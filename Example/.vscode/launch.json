@@ -27,6 +27,7 @@
       "program": "${workspaceRoot}/.vscode/launchReactNative.js",
       "type": "reactnative",
       "request": "attach",
+      "platform": "exponent",
       "sourceMaps": true,
       "outDir": "${workspaceRoot}/.vscode/.react"
     },
