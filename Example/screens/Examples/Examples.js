@@ -10,6 +10,13 @@ const list = [
     title: 'Interpolation transition',
     screen: screens.InterpolationTransition,
   },
+  {
+    title: 'Lazy Interpolation transition',
+    screen: screens.InterpolationTransition,
+    params: {
+      lazy: true,
+    },
+  },
   { title: 'Keyframes (interpolation)', screen: screens.Keyframes },
   { title: 'Delegate (Scroll)', screen: screens.DelegateScroll },
 ];
@@ -19,7 +26,10 @@ const Examples = () => {
     <ListItem
       {...item}
       onPress={() =>
-        NavigationService.navigate(item.screen, { title: item.title })
+        NavigationService.navigate(item.screen, {
+          title: item.title,
+          params: item.params,
+        })
       }
     />
   );

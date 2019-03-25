@@ -15,11 +15,12 @@ const colors = {
   green: '#2ecc71',
 };
 
-const config = createAnimationConfig({
+const config = {
   animation: {
     type: 'timing',
     duration: 300,
     interpolation: true,
+    lazy: false,
   },
   values: {
     width: { from: 50, to: 200 },
@@ -27,7 +28,12 @@ const config = createAnimationConfig({
     left: { from: 20, to: windowWidth - 20 - 200 },
     borderRadius: { from: 0, to: 100 },
   },
-});
+};
+
+const defaultConfig = createAnimationConfig(config);
+
+config.animation.lazy = true;
+const lazyConfig = createAnimationConfig(config);
 
 const s = StyleSheet.create({
   scroll: {
@@ -50,24 +56,17 @@ class Example extends React.PureComponent {
   state = {
     value: true,
   };
-  reanimatableRef = React.createRef();
   initialValue = this.state.value;
 
   toggleAnimation() {
     this.setState((state) => ({ value: !state.value }));
   }
 
-  toggleReset() {
-    this.initialValue = !this.initialValue;
-    this.reanimatableRef.current.resetTo(this.initialValue);
-  }
-
   render() {
     return (
       <View>
         <Reanimatable
-          ref={this.reanimatableRef}
-          config={config}
+          config={this.props.lazy ? lazyConfig : defaultConfig}
           value={this.state.value}
           containerStyle={s.animationContainer}
         >
@@ -83,31 +82,23 @@ class Example extends React.PureComponent {
             onPress={() => this.toggleAnimation()}
             text="Toggle animation"
           />
-
-          <Button
-            onPress={() => this.reanimatableRef.current.reset()}
-            text="Reset"
-          />
-
-          <Button
-            onPress={() => this.toggleReset()}
-            text="Toggle Reset"
-          />
         </View>
       </View>
     );
   }
 }
 
-export default function App() {
+export default function App(props) {
   // performance test
   const range = Array.from(new Array(10));
+
+  const lazy = props.navigation.getParam('lazy');
 
   return (
     <FlatList
       data={range}
       contentContainerStyle={s.scroll}
-      renderItem={() => <Example />}
+      renderItem={() => <Example lazy={lazy} />}
       keyExtractor={(_, i) => i.toString()}
     />
   );
