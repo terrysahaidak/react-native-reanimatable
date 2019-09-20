@@ -4,6 +4,14 @@ import TransitionAnimation from './TransitionAnimation'
 import InterpolationTransitionAnimation from './InterpolationTransitionAnimation'
 import DelegateAnimation from './DelegateAnimation'
 
+export {
+  KeyframesAnimation,
+  LoopAnimation,
+  TransitionAnimation,
+  DelegateAnimation,
+  InterpolationTransitionAnimation,
+}
+
 module.exports = {
   KeyframesAnimation,
   LoopAnimation,

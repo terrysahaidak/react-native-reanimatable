@@ -1,7 +1,7 @@
 import A from 'react-native-reanimated'
 import { ANIMATION_STATE } from './constants'
 import { getProperAnimation } from './animations'
-import { IAnimationConfig } from './createConfig'
+import { IAnimationConfig } from 'react-native-reanimatable'
 
 function createValues(valueNames: string[]) {
   return valueNames.reduce((acc, valueName) => {

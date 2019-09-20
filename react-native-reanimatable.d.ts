@@ -1,5 +1,6 @@
 declare module 'react-native-reanimatable' {
     import React, { RefForwardingComponent, PureComponent } from 'react'
+    import { StyleProp, ViewProps } from 'react-native'
     import Animated from 'react-native-reanimated'
 
     export type AnimationState = { [index: string]: number }
@@ -10,6 +11,12 @@ declare module 'react-native-reanimatable' {
     interface IAnimationConfigResult {
         type?: string,
         generate?: Object,
+    }
+
+    export interface IReanimatable {
+        config: IAnimationConfig,
+        value: boolean,
+        containerStyle?: StyleProp<ViewProps>
     }
 
     // TODO: Add delegate typing
@@ -88,4 +95,8 @@ declare module 'react-native-reanimatable' {
 
         autoplay: boolean
     }
+
+    // interface ExtendedRefProps = React.RefAttributes<unknown> extends IReanimatable
+    
+    export type ReanimatableComponent = React.ForwardRefExoticComponent<React.RefAttributes<IReanimatable>>
 }

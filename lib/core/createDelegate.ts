@@ -1,8 +1,8 @@
 import Animated from 'react-native-reanimated'
 import * as objectPath from '../utils/objectPath'
 
-// TODO: Figure this param `eventType`
-export default function createDelegate(path: string[]) {
+// TODO: Figure out what and how to use `eventType`
+export default function createDelegate(path: string[], eventType?: any) {
   const value = new Animated.Value(0)
 
   const eventMap = objectPath.map(

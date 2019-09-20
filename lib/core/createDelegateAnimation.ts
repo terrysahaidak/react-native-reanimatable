@@ -1,5 +1,5 @@
 import A from 'react-native-reanimated'
-import { IAnimationConfig } from './createConfig'
+import { IAnimationConfig } from 'react-native-reanimatable'
 
 const numberSort = (a, b) => a - b
 
@@ -62,7 +62,6 @@ export function generateInterpolations({ keyframes, baseValue }) {
   }, {})
 }
 
-// TODO: Typing
 export default function createDelegateAnimation(config: IAnimationConfig) {
   const {
     keyframes,

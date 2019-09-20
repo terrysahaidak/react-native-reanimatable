@@ -25,6 +25,7 @@
     "@types/node": "^12.7.5",
     "@types/prop-types": "^15.7.2",
     "@types/react": "^16.9.2",
+    "@types/react-native": "^0.60.15",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.0.1",
     "eslint": "^4.2.0",
