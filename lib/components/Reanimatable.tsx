@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react'
+import React, { ReactElement } from 'react'
 import T from 'prop-types'
 
 import { ViewPropTypes, View } from 'react-native'
-import { IAnimationConfigResult, IReanimatable, ReanimatableComponent } from 'react-native-reanimatable'
+import { IAnimationConfigResult, IReanimatable } from 'react-native-reanimatable'
 
 import { animationConfigPropTypes } from './propTypes'
 import {
@@ -24,19 +24,19 @@ const validateConfig = (config: IAnimationConfigResult) => {
 }
 
 // prettier-ignore
-const Reanimatable: ReanimatableComponent = React.forwardRef(({
+const Reanimatable = React.forwardRef(({
   config,
   value,
   containerStyle,
   ...rest
-}, ref) => {
+}: IReanimatable, ref): ReactElement<IReanimatable, any> => {
   // prettier-ignore
   validateConfig(config)
 
   const animationConfig = Object.assign({}, config, {
     initialValue: value,
   })
-  let content: ReactNode = null
+  let content: ReactElement<IReanimatable> = null
 
   switch (animationConfig.type) {
     case ANIMATION_TYPE.KEYFRAMES:

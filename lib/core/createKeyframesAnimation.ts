@@ -1,6 +1,6 @@
 import A from 'react-native-reanimated'
+import { IAnimationConfig } from 'react-native-reanimatable'
 import { runTiming } from './animations'
-import { IAnimationConfig } from './createConfig'
 
 // TODO: Typing
 function generateRanges(pairs, duration) {

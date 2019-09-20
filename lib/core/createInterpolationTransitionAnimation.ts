@@ -1,7 +1,7 @@
 import A from 'react-native-reanimated'
+import { IAnimationConfig } from 'react-native-reanimatable'
 import { ANIMATION_STATE } from './constants'
 import { getProperAnimation } from './animations'
-import { IAnimationConfig } from './createConfig'
 
 // TODO: Typing
 export default function createTransitionAnimation(config: IAnimationConfig) {

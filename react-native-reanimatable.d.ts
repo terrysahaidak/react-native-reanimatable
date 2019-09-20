@@ -14,14 +14,14 @@ declare module 'react-native-reanimatable' {
     }
 
     export interface IReanimatable {
-        config: IAnimationConfig,
+        config: IAnimationConfigResult,
         value: boolean,
         containerStyle?: StyleProp<ViewProps>
     }
 
     // TODO: Add delegate typing
     export interface IAnimationConfig {
-        animation: { delegate, duration: number, interpolation },
+        animation: { delegate, duration: number, interpolation, lazy: boolean },
         keyframes?: Object,
         values?: Object,
     }
@@ -95,8 +95,4 @@ declare module 'react-native-reanimatable' {
 
         autoplay: boolean
     }
-
-    // interface ExtendedRefProps = React.RefAttributes<unknown> extends IReanimatable
-    
-    export type ReanimatableComponent = React.ForwardRefExoticComponent<React.RefAttributes<IReanimatable>>
 }
