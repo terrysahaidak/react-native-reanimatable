@@ -1,32 +1,35 @@
-import React from 'react';
-import { InteractionManager } from 'react-native';
-import T from 'prop-types';
-import A from 'react-native-reanimated';
+import React from 'react'
+import { InteractionManager } from 'react-native'
+import T from 'prop-types'
+import A from 'react-native-reanimated'
 
+// TODO: Typing
 class KeyframesAnimation extends React.PureComponent {
-  constructor(props) {
-    super(props);
+  _operations: any
 
-    const { values, operations } = props.generate();
-    this._operations = operations;
+  constructor(props) {
+    super(props)
+
+    const { values, operations } = props.generate()
+    this._operations = operations
 
     this.state = {
       values,
-    };
+    }
   }
 
   componentDidMount() {
     InteractionManager.runAfterInteractions(() => {
-      const animation = this._operations.createAnimation();
+      const animation = this._operations.createAnimation()
 
       this.setState({
         animation,
-      });
-    });
+      })
+    })
   }
 
   reset() {
-    this._operations.reset();
+    this._operations.reset()
   }
 
   render() {

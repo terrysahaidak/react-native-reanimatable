@@ -1,5 +1,6 @@
-import A, { Easing } from 'react-native-reanimated';
+import A, { Easing } from 'react-native-reanimated'
 
+// TODO: Typing
 export const runTiming = ({
   clock,
   duration,
@@ -20,7 +21,7 @@ export const runTiming = ({
     duration,
     toValue: new A.Value(0),
     easing: easing || Easing.inOut(Easing.ease),
-  };
+  }
 
   return A.block([
     // stop opposite clock before running our animation
@@ -53,9 +54,10 @@ export const runTiming = ({
     A.cond(state.finished, A.block([A.stopClock(clock), onFinish])),
     // we made the block return the updated position
     A.set(value, state.position),
-  ]);
-};
+  ])
+}
 
+// TODO: Typing
 export function getProperAnimation(
   reanimatableConfig,
   animationConfig,
