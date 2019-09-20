@@ -1,3 +1,5 @@
+import { IAnimationConfig, IAnimationConfigResult } from 'react-native-reanimatable'
+
 import createKeyframesAnimation from './createKeyframesAnimation'
 import createTransitionAnimation from './createTransitionAnimation'
 import createInterpolationTransitionAnimation from './createInterpolationTransitionAnimation'
@@ -5,9 +7,8 @@ import createDelegateAnimation from './createDelegateAnimation'
 
 import { ANIMATION_TYPE } from './constants'
 
-// TODO: Typing
-export default function createConfig(animationConfig) {
-  const config = {}
+export default function createConfig(animationConfig: IAnimationConfig) {
+  const config: IAnimationConfigResult = {}
 
   if (animationConfig.animation.delegate) {
     config.type = ANIMATION_TYPE.DELEGATE

@@ -1,15 +1,16 @@
 import A from 'react-native-reanimated'
 import { ANIMATION_STATE } from './constants'
 import { getProperAnimation } from './animations'
+import { IAnimationConfig } from './createConfig'
 
-// TODO: Typing
-function createValues(valueNames) {
+function createValues(valueNames: string[]) {
   return valueNames.reduce((acc, valueName) => {
     acc[valueName] = new A.Value(0)
     return acc
   }, {})
 }
 
+// TODO: Typing
 function setValues(configValues, animationValues) {
   return (initialValue) =>
     Object.keys(animationValues).forEach((valueName) => {
@@ -19,7 +20,7 @@ function setValues(configValues, animationValues) {
 }
 
 // TODO: Typing
-export default function createTransitionAnimation(config) {
+export default function createTransitionAnimation(config: IAnimationConfig) {
   const valueNames = Object.keys(config.values)
   return () => {
     const values = createValues(valueNames)

@@ -1,10 +1,11 @@
-import A from 'react-native-reanimated';
-import { ANIMATION_STATE } from './constants';
-import { getProperAnimation } from './animations';
+import A from 'react-native-reanimated'
+import { ANIMATION_STATE } from './constants'
+import { getProperAnimation } from './animations'
+import { IAnimationConfig } from './createConfig'
 
 // TODO: Typing
-export default function createTransitionAnimation(config) {
-  const valueNames = Object.keys(config.values);
+export default function createTransitionAnimation(config: IAnimationConfig) {
+  const valueNames = Object.keys(config.values)
   const initialAnimationValues = {
     from: {},
     to: {},
@@ -15,7 +16,7 @@ export default function createTransitionAnimation(config) {
 
     initialAnimationValues.from[key] = current.from
     initialAnimationValues.to[key] = current.to
-  });
+  })
 
   return () => {
     function createAnimation(stateValue) {

@@ -31,7 +31,8 @@
         "jsx": "react"
     },
     "include": [
-        "./lib/**/*"
+        "./lib/**/*",
+        "./"
     ],
     "exclude": [
         "node_modules",

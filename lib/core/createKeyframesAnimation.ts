@@ -1,5 +1,6 @@
 import A from 'react-native-reanimated'
 import { runTiming } from './animations'
+import { IAnimationConfig } from './createConfig'
 
 // TODO: Typing
 function generateRanges(pairs, duration) {
@@ -65,7 +66,7 @@ function generateInterpolations({ ranges, duration, baseValue }) {
   }, {})
 }
 
-export default function createKeyframesAnimation(config) {
+export default function createKeyframesAnimation(config: IAnimationConfig) {
   const {
     keyframes,
     animation: { duration },
