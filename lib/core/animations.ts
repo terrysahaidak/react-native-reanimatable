@@ -1,6 +1,15 @@
 import A, { Easing } from 'react-native-reanimated'
 
-// TODO: Typing
+interface IRunTiming {
+  clock: A.Clock,
+  duration: number,
+  value: A.Value<number>,
+  oppositeClock?: A.Clock,
+  dest?: A.Adaptable<number>,
+  easing?: A.EasingFunction,
+  onFinish?: A.Adaptable<number>
+}
+
 export const runTiming = ({
   clock,
   duration,
@@ -9,7 +18,7 @@ export const runTiming = ({
   dest,
   easing,
   onFinish,
-}) => {
+}: IRunTiming) => {
   const state = {
     finished: new A.Value(0),
     position: new A.Value(0),

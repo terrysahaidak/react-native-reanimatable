@@ -1,9 +1,9 @@
-import LoopAnimation from './components/LoopAnimation';
-import Reanimatable from './components/Reanimatable';
-import ScrollView from './components/ScrollView';
-import * as animations from './core/animations';
-import createConfig from './core/createConfig';
-import createDelegate from './core/createDelegate';
+import LoopAnimation from './components/LoopAnimation'
+import Reanimatable from './components/Reanimatable'
+import ScrollView from './components/ScrollView'
+import * as animations from './core/animations'
+import createConfig from './core/createConfig'
+import createDelegate from './core/createDelegate'
 
 module.exports = {
   Reanimatable,
@@ -12,4 +12,4 @@ module.exports = {
   animations,
   createDelegate,
   createAnimationConfig: createConfig,
-};
+}

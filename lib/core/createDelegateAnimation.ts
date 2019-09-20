@@ -1,6 +1,6 @@
 import A from 'react-native-reanimated'
 
-const numberSort = (a: number, b: number) => a - b
+const numberSort = (a, b) => a - b
 
 // TODO: Typing
 function generateRanges(pairs) {
