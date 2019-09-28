@@ -7,3 +7,4 @@ node_modules/**/*
 dest/
 npm-debug.*
 package-lock.json
+.vscode/

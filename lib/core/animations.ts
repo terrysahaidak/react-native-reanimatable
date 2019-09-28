@@ -1,4 +1,14 @@
-import A, { Easing } from 'react-native-reanimated';
+import A, { Easing } from 'react-native-reanimated'
+
+interface IRunTiming {
+  clock: A.Clock,
+  duration: number,
+  value: A.Value<number>,
+  oppositeClock?: A.Clock,
+  dest?: A.Adaptable<number>,
+  easing?: A.EasingFunction,
+  onFinish?: A.Adaptable<number>
+}
 
 export const runTiming = ({
   clock,
@@ -8,7 +18,7 @@ export const runTiming = ({
   dest,
   easing,
   onFinish,
-}) => {
+}: IRunTiming) => {
   const state = {
     finished: new A.Value(0),
     position: new A.Value(0),
@@ -20,7 +30,7 @@ export const runTiming = ({
     duration,
     toValue: new A.Value(0),
     easing: easing || Easing.inOut(Easing.ease),
-  };
+  }
 
   return A.block([
     // stop opposite clock before running our animation
@@ -53,9 +63,10 @@ export const runTiming = ({
     A.cond(state.finished, A.block([A.stopClock(clock), onFinish])),
     // we made the block return the updated position
     A.set(value, state.position),
-  ]);
-};
+  ])
+}
 
+// TODO: Typing
 export function getProperAnimation(
   reanimatableConfig,
   animationConfig,

@@ -38,10 +38,14 @@ Detailed usage and explanation will come later.
 - [ ] Add more examples
 - [ ] Add docs
 - [ ] Add typings
+- [ ] Convert to typescript
 - [ ] Add some out of the box animations (bounces, zooms etc)
 - [ ] Add animation lifecycle
 - [ ] Add support for color animations
 - [ ] Add ability to control the animation (play, pause, reset)
+
+## In Progress
+- Typescript conversion
 
 ## Example
 ```jsx

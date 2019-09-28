@@ -1,43 +1,49 @@
-import React, { Component } from 'react';
-import { InteractionManager } from 'react-native';
-import T from 'prop-types';
-import A from 'react-native-reanimated';
-import { ANIMATION_STATE } from '../core/constants';
+import React, { Component } from 'react'
+import T from 'prop-types'
+import A from 'react-native-reanimated'
+import { InteractionManager } from 'react-native'
+import { ANIMATION_STATE } from '../core/constants'
 
 class TransitionAnimation extends Component {
-  constructor(props) {
-    super(props);
+  initialValue
 
-    this.initialValue = props.value;
+  _operations
+
+  animationState
+
+  constructor(props) {
+    super(props)
+
+    this.initialValue = props.value
 
     const {
       animationState,
       operations,
       values,
-    } = this.props.generate();
+    } = this.props.generate()
 
-    this._operations = operations;
+    this._operations = operations
 
-    this.animationState = animationState;
+    this.animationState = animationState
 
     this.state = {
       values,
-    };
+    }
   }
 
   componentDidMount() {
     // in order to reset animation values and apply it to layout
     // we have to do it on a mounted component
     // the user won't notice it
-    this.reset();
+    this.reset()
 
     InteractionManager.runAfterInteractions(() => {
-      const animation = this._operations.createAnimation();
+      const animation = this._operations.createAnimation()
 
       this.setState({
         animation,
       });
-    });
+    })
   }
 
   componentDidUpdate(prevProps) {
@@ -46,12 +52,12 @@ class TransitionAnimation extends Component {
         this.props.value
           ? ANIMATION_STATE.PLAY_FORWARD
           : ANIMATION_STATE.PLAY_BACKWARD,
-      );
+      )
     }
   }
 
   reset() {
-    this.resetTo(this.initialValue);
+    this.resetTo(this.initialValue)
   }
 
   resetTo(value) {
@@ -60,7 +66,7 @@ class TransitionAnimation extends Component {
       !value
         ? ANIMATION_STATE.END_POINT
         : ANIMATION_STATE.START_POINT,
-    );
+    )
   }
 
   render() {
@@ -81,4 +87,4 @@ TransitionAnimation.propTypes = {
   generate: T.func,
 };
 
-export default TransitionAnimation;
+export default TransitionAnimation

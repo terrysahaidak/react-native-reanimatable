@@ -1,0 +1,43 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "forceConsistentCasingInFileNames": true,
+        "lib": [
+            "es5",
+            "es6",
+            "es7",
+            "es2017",
+            "es2018.promise"
+        ],
+        "isolatedModules": false,
+        "moduleResolution": "node",
+        "module": "commonjs",
+        "noEmit": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": false,
+        "noImplicitThis": false,
+        "noImplicitAny": false,
+        "target": "esnext",
+        "resolveJsonModule": true,
+        "removeComments": true,
+        "sourceMap": false,
+        "strict": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": false,
+        "jsx": "react"
+    },
+    "include": [
+        "./lib/**/*",
+        "./"
+    ],
+    "exclude": [
+        "node_modules",
+        "babel.config.js",
+        "metro.config.js",
+        "jest.config.js"
+    ]
+}

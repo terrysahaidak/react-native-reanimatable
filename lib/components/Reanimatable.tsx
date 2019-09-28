@@ -1,36 +1,42 @@
-import React from 'react';
-import { ViewPropTypes, View } from 'react-native';
-import T from 'prop-types';
-import { animationConfigPropTypes } from './propTypes';
+import React, { ReactElement } from 'react'
+import T from 'prop-types'
+
+import { ViewPropTypes, View } from 'react-native'
+import { IAnimationConfigResult, IReanimatable } from 'react-native-reanimatable'
+
+import { animationConfigPropTypes } from './propTypes'
 import {
   KeyframesAnimation,
   InterpolationTransitionAnimation,
   TransitionAnimation,
   DelegateAnimation,
-} from './';
-import { ANIMATION_TYPE } from '../core/constants';
+} from './index'
 
-const validateConfig = (config) => {
+import { ANIMATION_TYPE } from '../core/constants'
+
+
+const validateConfig = (config: IAnimationConfigResult) => {
   if (typeof config.generate !== 'function') {
     throw new Error(
       'Invalid config provided for the Reanimatable component. Did you forget to use "createAnimationConfig"?',
-    );
+    )
   }
-};
+}
+
 // prettier-ignore
 const Reanimatable = React.forwardRef(({
   config,
   value,
   containerStyle,
   ...rest
-}, ref) => {
-// prettier-ignore
-  validateConfig(config);
+}: IReanimatable, ref): ReactElement<IReanimatable, any> => {
+  // prettier-ignore
+  validateConfig(config)
 
   const animationConfig = Object.assign({}, config, {
     initialValue: value,
-  });
-  let content = null;
+  })
+  let content: ReactElement<IReanimatable> = null
 
   switch (animationConfig.type) {
     case ANIMATION_TYPE.KEYFRAMES:
@@ -40,8 +46,8 @@ const Reanimatable = React.forwardRef(({
           {...animationConfig}
           {...rest}
         />
-      );
-      break;
+      )
+      break
     case ANIMATION_TYPE.DELEGATE:
       content = (
         <DelegateAnimation
@@ -49,8 +55,8 @@ const Reanimatable = React.forwardRef(({
           {...animationConfig}
           {...rest}
         />
-      );
-      break;
+      )
+      break
     case ANIMATION_TYPE.INTERPOLATION_TRANSITION:
       content = (
         <InterpolationTransitionAnimation
@@ -59,8 +65,8 @@ const Reanimatable = React.forwardRef(({
           value={value}
           {...rest}
         />
-      );
-      break;
+      )
+      break
     case ANIMATION_TYPE.TRANSITION:
     default:
       content = (
@@ -70,21 +76,21 @@ const Reanimatable = React.forwardRef(({
           value={value}
           {...rest}
         />
-      );
-      break;
+      )
+      break
   }
 
   if (containerStyle) {
-    return <View style={containerStyle}>{content}</View>;
+    return <View style={containerStyle}>{content}</View>
   }
 
-  return content;
+  return content
 });
 
 Reanimatable.propTypes = {
   config: animationConfigPropTypes,
   value: T.bool,
   containerStyle: ViewPropTypes.style,
-};
+}
 
-export default Reanimatable;
+export default Reanimatable

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { InteractionManager } from 'react-native';
 import T from 'prop-types';
-import A from 'react-native-reanimated';
+import { InteractionManager } from 'react-native';
 import { ANIMATION_STATE } from '../core/constants';
 
 class InterpolationTransitionAnimation extends Component {

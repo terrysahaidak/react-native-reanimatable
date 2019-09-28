@@ -1,13 +1,30 @@
-import React, { PureComponent } from 'react';
-import T from 'prop-types';
-import TransitionAnimation from './TransitionAnimation';
-import { animationConfigPropTypes } from './propTypes';
+import React, { PureComponent } from 'react'
+import T from 'prop-types'
+import TransitionAnimation from './TransitionAnimation'
+import { animationConfigPropTypes } from './propTypes'
 
-class LoopAnimation extends PureComponent {
+// TODO: config has to have proper typing
+interface ILoopAnimationProps {
+  autoplay: boolean,
+  config: {
+    animation: {
+      duration: number
+    },
+  }
+}
+
+interface ILoopAnimationState {
+  value: boolean,
+}
+
+class LoopAnimation extends PureComponent<ILoopAnimationProps, ILoopAnimationState> {
+  count: number
+  _interval: NodeJS.Timeout
+
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.count = props.iterationCount;
+    this.count = props.iterationCount
     this.state = {
       value: false,
     };
@@ -15,12 +32,12 @@ class LoopAnimation extends PureComponent {
 
   componentDidMount() {
     if (this.props.autoplay) {
-      this.play();
+      this.play()
     }
   }
 
   componentWillUnmount() {
-    this.stop();
+    this.stop()
   }
 
   toggleState() {
@@ -38,7 +55,7 @@ class LoopAnimation extends PureComponent {
     );
   }
 
-  play(count) {
+  play(count: number = 0) {
     this.count = count || this.count;
 
     const { duration } = this.props.config.animation;
